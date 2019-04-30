@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CounterActions } from '../actions';
-import { State } from '../state';
+import ActionCreater from '../actionCreaters/counter';
+import { CounterState } from '../state/counter';
 
 // Components
-export interface AppProps {
-    counter: State;
+export interface CounterProps {
+    counter: CounterState;
     actions: any;
 }
-class App extends React.Component<AppProps> {
+class Counter extends React.Component<CounterProps> {
     public render() {
         const counter = this.props.counter;
         const actions = this.props.actions;
@@ -25,15 +25,15 @@ class App extends React.Component<AppProps> {
 }
 
 // action,state接続
-function mapStateToProps(state: { counter: State }) {
+function mapStateToProps(state: { counter: CounterState }) {
     return { 'counter': state.counter };
 }
 function mapDispatchToProps(dispatch: any) {
     return {
-        'actions': bindActionCreators({ ...CounterActions }, dispatch)
+        'actions': bindActionCreators({ ...ActionCreater }, dispatch)
     };
 }
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(App);
+)(Counter);

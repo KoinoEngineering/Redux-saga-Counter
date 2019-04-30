@@ -1,11 +1,7 @@
-import { put, takeEvery, delay } from "redux-saga/effects";
-import { actions, CounterActions } from "../actions";
-
-export function* incrementAsync() {
-    yield delay(1000);
-    yield put(CounterActions.increment());
-}
+import counter from "./counter"
+import { fork } from 'redux-saga/effects';
 
 export default function* rootSaga() {
-    yield takeEvery(actions.INCREMENT_ASYNC, incrementAsync);
+    // すべてのsagaを起動する
+    yield fork(counter);
 }
