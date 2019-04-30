@@ -1,0 +1,5 @@
+export default {
+    "INCREMENT": "INCREMENT",
+    "DECREMENT": "DECREMENT",
+    "INCREMENT_ASYNC": "INCREMENT_ASYNC"
+};
